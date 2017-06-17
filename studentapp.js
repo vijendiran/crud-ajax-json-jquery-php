@@ -1,7 +1,9 @@
 $(document).ready(function(){
   $("body").on("click",".studentsList .delete-btn",function() {
+    console.log("it works");
     var sID = $(".edit-form .sid").val();
     console.log(sID);
+    return;
     $.ajax({
         type:"POST",
         url:"http://localhost/crud-ajax-json-jquery-php/api/deleteStudent.php",
@@ -11,7 +13,7 @@ $(document).ready(function(){
         success: function(data){
           $(".edit-form").hide();
             $("ul").remove();
-            getall();
+            // getall();
           }
         })
     })
