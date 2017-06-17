@@ -1,73 +1,80 @@
 $(document).ready(function(){
-  var studentsList;
-  function getall() {
-    $(".studentsList").html("");
+  $("body").on("click",".studentsList .delete-btn",function() {
+    var sID = $(".edit-form .sid").val();
+    console.log(sID);
     $.ajax({
-      url:"http://localhost/crud-ajax-json-jquery-php/api/getStudents.php",
-      method:"GET",
-      success:function(data) {
-        console.log(data);
-        studentsList = JSON.parse(data);
-        for (var i = 0; i < studentsList.length; i++) {
-          console.log(studentsList[i]["name"]);
-          $(".studentsList").append("<li>"+studentsList[i]["name"]+"</li>");
-        }
-        $("body").on("click",".studentsList li",function() {
-          var index = $(this).index();
-
-          $(".Edit-form .studentName").val(studentsList[index]["name"]);
-          $(".Edit-form .studentFname").val(studentsList[index]["fathername"]);
-          $(".Edit-form .studentRollno").val(studentsList[index]["rollno"]);
-          $(".Edit-form .studentDegree").val(studentsList[index]["degree"]);
-          $(".Edit-form .studentBranch").val(studentsList[index]["branch"]);
-          $(".Edit-form .sid").val(studentsList[index]["id"]);
-
-
-          // console.log("li works");
-          // console.log($(this).index());
-          // console.log(studentsList[0]);
-        });
+        type:"POST",
+        url:"http://localhost/crud-ajax-json-jquery-php/api/deleteStudent.php",
+        data:{
+            sid : sID
+            },
+        success: function(data){
+          $(".edit-form").hide();
+            $("ul").remove();
+            getall();
+          }
+        })
+    })
+var studentsList;
+function getall() {
+  $(".studentsList").html(" ");
+  $.ajax({
+    url:"http://localhost/crud-ajax-json-jquery-php/api/getStudents.php",
+    method:"GET",
+    success:function(data) {
+      studentsList = JSON.parse(data);
+      console.log(studentsList);
+      // console.log(studentsList[0][0]);
+      for (var i = 0; i < studentsList.length; i++) {
+        // console.log(studentsList[i]["name"]);
+            $(".studentsList").append("<ul><li>"+studentsList[i]["name"]+"</li><li>"+studentsList[i]["fathername"]+"</li><li>"+studentsList[i]["rollno"]+"</li><li>"+studentsList[i]["degree"]+"</li><li>"+studentsList[i]["branch"]+"</li><div class='delete-btn'>delete</div></ul>");
       }
 
-    })
-
-  }
-  getall();
-$.ajax({
-  url:"http://localhost/crud-ajax-json-jquery-php/api/getStudents.php",
-  method:"GET",
-  success:function(data) {
-    console.log(data);
-    var studentsList = JSON.parse(data);
-    for (var i = 0; i < studentsList.length; i++) {
-      console.log(studentsList[i]["name"]);
     }
-    $("body").on("click",".studentsList li",function() {
-      var index = $(this).index();
-      $(".Edit-form .studentName").val(studentsList[index]["name"]);
-      $(".Edit-form .studentFname").val(studentsList[index]["fathername"]);
-      $(".Edit-form .studentRollno").val(studentsList[index]["rollno"]);
-      $(".Edit-form .studentDegree").val(studentsList[index]["degree"]);
-      $(".Edit-form .studentBranch").val(studentsList[index]["branch"]);
-      $(".Edit-form .sid").val(studentsList[index]["id"]);
 
+  })
+}
+getall();
+//li-on-click
+$("body").on("click",".studentsList ul",function() {
+  // console.log("li works");
+  // console.log(studentsList[$(this).index()]);
+  // console.log(studentsList[0]);
+  $(".edit-form").show();
+  var index = $(this).index();
+  $(".edit-form .studentName").val(studentsList[index]["name"]);
+  $(".edit-form .studentFname").val(studentsList[index]["fathername"]);
+  $(".edit-form .studentRollno").val(studentsList[index]["rollno"]);
+  $(".edit-form .studentDegree").val(studentsList[index]["degree"]);
+  $(".edit-form .studentBranch").val(studentsList[index]["branch"]);
+  $(".edit-form .sid").val(studentsList[index]["id"]);
+});
+// $.ajax({
+//   url:"http://localhost/crud-ajax-json-jquery-php/api/getStudents.php",
+//   method:"GET",
+//   success:function(data) {
+//     var studentsList = JSON.parse(data);
+//     console.log(studentsList);
+//     for (var i = 0; i < studentsList.length; i++) {
+//       console.log(studentsList[i]["name"]);
+//           $(".studentsList").append("<li>"+studentsList[i]["name"]+"</li>");
+//     }
+//
+//   }
+//
+// })
 
-      // console.log("li works");
-      // console.log($(this).index());
-      // console.log(studentsList[0]);
-    });
-  }
-
-})
-//Edit-form
+// Edit-form
 $(".edit-student").click(function() {
-  var sName = $(".Edit-form .studentName").val();
-  var sFname = $(".Edit-form .studentFname").val();
-  var sRollno = $(".Edit-form .studentRollno").val();
-  var sDegree = $(".Edit-form .studentDegree").val();
-  var sBranch = $(".Edit-form .studentBranch").val();
-  var sID = $(".Edit-form .sid").val();
-  //
+  // console.log("hello");
+
+  var sName = $(".edit-form .studentName").val();
+  var sFname = $(".edit-form .studentFname").val();
+  var sRollno = $(".edit-form .studentRollno").val();
+  var sDegree = $(".edit-form .studentDegree").val();
+  var sBranch = $(".edit-form .studentBranch").val();
+  var sID = $(".edit-form .sid").val();
+
   // console.log(sName);
   // console.log(sFname);
   // console.log(sRollno);
@@ -75,24 +82,33 @@ $(".edit-student").click(function() {
   // console.log(sBranch);
   // console.log(sID);
 
+  //send to php file via ajax
   $.ajax({
     url:"http://localhost/crud-ajax-json-jquery-php/api/editStudents.php",
     method:"POST",
     data:{
-      sID : sid,
+      sid : sID,
       name : sName,
       fathername : sFname,
       rollno : sRollno,
       degree : sDegree,
       branch : sBranch
     },
-    success:function(data) {
-    console.log(data);
-    // $(".studentsList").append("<li>"+sName+"</li>");
+        success:function(data) {
+        getall();
+        // $(".studentsList").append("<li>"+sName+"</li>");
 
-  }
+      }
   })
 })
+
+//     success:function(data) {
+//     console.log(data);
+//     // $(".studentsList").append("<li>"+sName+"</li>");
+//
+//   }
+//   })
+// })
 
 $(".submit-student").click(function() {
   var sName = $(".studentName").val();
@@ -117,11 +133,28 @@ $(".submit-student").click(function() {
       branch :sBranch
     },
     success:function(data) {
-    console.log(data);
+    // console.log(data);
     $(".studentsList").append("<li>"+sName+"</li>");
+    getall();
 
   }
   })
 })
-
-});
+// $("body").on("click",".studentsList .delete-btn",function() {
+//   var sID = $(".edit-form .sid").val();
+//   console.log(sID);
+//   $.ajax({
+//       type:"POST",
+//       url:"http://localhost/crud-ajax-json-jquery-php/api/deleteStudent.php",
+//       data:{
+//           sid : sID
+//           },
+//       success: function(data){
+//         $(".edit-form").hide();
+//           $("ul").remove();
+//           getall();
+//         }
+//       })
+//
+// })
+})

@@ -3,6 +3,36 @@
   <head>
     <meta charset="utf-8">
     <title>CRUD-APP</title>
+    <style media="screen">
+    ul{
+	border: 1px solid red;
+}
+li{
+		color: green;
+		list-style-type: underline;
+	}
+li:hover,.delete-btn:hover,.update-btn:hover{
+		cursor: pointer;
+		color: blue;
+}
+.delete-btn{
+	width: 40px;
+	height: 30px;
+	background-color: red;
+	color: white;
+  /*border: none;*/
+  font-size: 15px;
+  margin:20px;
+}
+/*.update-btn{
+	width: 60px;
+	height: 50px;
+	background-color: green;
+	color: white;
+	margin-left: 20px;
+  font-size: 15px;
+}*/
+    </style>
   </head>
   <body>
     <h1>CRUD-App using AJAX-JSON-JQuery-PHP</h1>
@@ -24,7 +54,7 @@
 
     </div>
     <h2>Edit-student-form</h2>
-    <div class="Edit-form">
+    <div class="edit-form" style="display:none">
       <input type="hidden" name="" value="" class="sid">
       <label>Name</label>
       <input type="text" name="" value="" class="studentName"><br>
@@ -36,7 +66,7 @@
       <input type="text" name="" value="" class="studentDegree"><br>
       <label>Branch</label>
       <input type="text" name="" value="" class="studentBranch"><br>
-      <input type="submit" name="" value="edit student" class="edit-student">
+      <input type="submit" name="" value="save student" class="edit-student">
     </div>
   </body>
   <script
