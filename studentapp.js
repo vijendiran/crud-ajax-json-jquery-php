@@ -1,22 +1,4 @@
 $(document).ready(function(){
-  $("body").on("click",".studentsList .delete-btn",function() {
-    console.log("it works");
-    var sID = $(".edit-form .sid").val();
-    console.log(sID);
-    return;
-    $.ajax({
-        type:"POST",
-        url:"http://localhost/crud-ajax-json-jquery-php/api/deleteStudent.php",
-        data:{
-            sid : sID
-            },
-        success: function(data){
-          $(".edit-form").hide();
-            $("ul").remove();
-            // getall();
-          }
-        })
-    })
 var studentsList;
 function getall() {
   $(".studentsList").html(" ");
@@ -29,7 +11,7 @@ function getall() {
       // console.log(studentsList[0][0]);
       for (var i = 0; i < studentsList.length; i++) {
         // console.log(studentsList[i]["name"]);
-            $(".studentsList").append("<ul><li>"+studentsList[i]["name"]+"</li><li>"+studentsList[i]["fathername"]+"</li><li>"+studentsList[i]["rollno"]+"</li><li>"+studentsList[i]["degree"]+"</li><li>"+studentsList[i]["branch"]+"</li><div class='delete-btn'>delete</div></ul>");
+            $(".studentsList").append('<li><h2>'+studentsList[i]["name"]+'<h2><h3>'+studentsList[i]["fathername"]+'</h3><h4>'+studentsList[i]["rollno"]+'</h4><h5>'+studentsList[i]["degree"]+'</h5><div class="update-btn">update</div></li>');
       }
 
     }
@@ -38,11 +20,14 @@ function getall() {
 }
 getall();
 //li-on-click
-$("body").on("click",".studentsList ul",function() {
-  // console.log("li works");
-  // console.log(studentsList[$(this).index()]);
-  // console.log(studentsList[0]);
+$("body").on("click",".studentsList  .update-btn",function() {
+  console.log("li works");
+
   $(".edit-form").show();
+  var name =$(this).find(".studentsList .stdname").html();
+  $(".edit-form .studentName").val(name);
+
+  return;
   var index = $(this).index();
   $(".edit-form .studentName").val(studentsList[index]["name"]);
   $(".edit-form .studentFname").val(studentsList[index]["fathername"]);
@@ -51,20 +36,6 @@ $("body").on("click",".studentsList ul",function() {
   $(".edit-form .studentBranch").val(studentsList[index]["branch"]);
   $(".edit-form .sid").val(studentsList[index]["id"]);
 });
-// $.ajax({
-//   url:"http://localhost/crud-ajax-json-jquery-php/api/getStudents.php",
-//   method:"GET",
-//   success:function(data) {
-//     var studentsList = JSON.parse(data);
-//     console.log(studentsList);
-//     for (var i = 0; i < studentsList.length; i++) {
-//       console.log(studentsList[i]["name"]);
-//           $(".studentsList").append("<li>"+studentsList[i]["name"]+"</li>");
-//     }
-//
-//   }
-//
-// })
 
 // Edit-form
 $(".edit-student").click(function() {
