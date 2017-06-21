@@ -10,7 +10,7 @@ function getall() {
       console.log(studentsList);
       for (var i = 0; i < studentsList.length; i++) {
         // console.log(studentsList[i]["name"]);
-        $(".studentsList").append('<li><h2>'+studentsList[i]["name"]+'</h2><h3>'+studentsList[i]["fathername"]+'</h3><h4>'+studentsList[i]["rollno"]+'</h4><h5>'+studentsList[i]["degree"]+'</h5><h6>'+studentsList[i]["branch"]+'</h6><div class="update-btn">update</div></li>');
+        $(".studentsList").append('<li><h2>'+studentsList[i]["name"]+'</h2><h3>'+studentsList[i]["fathername"]+'</h3><h4>'+studentsList[i]["rollno"]+'</h4><h5>'+studentsList[i]["degree"]+'</h5><h6>'+studentsList[i]["branch"]+'</h6><div class="update-btn">update</div><div class="delete-btn">delete</div></li>');
       }
     }
   })
