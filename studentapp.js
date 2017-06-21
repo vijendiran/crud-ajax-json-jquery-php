@@ -75,14 +75,6 @@ $(".edit-student").click(function() {
   })
 })
 
-//     success:function(data) {
-//     console.log(data);
-//     // $(".studentsList").append("<li>"+sName+"</li>");
-//
-//   }
-//   })
-// })
-
 $(".submit-student").click(function() {
   var sName = $(".studentName").val();
   var sFname = $(".studentFname").val();
@@ -113,21 +105,4 @@ $(".submit-student").click(function() {
   }
   })
 })
-// $("body").on("click",".studentsList .delete-btn",function() {
-//   var sID = $(".edit-form .sid").val();
-//   console.log(sID);
-//   $.ajax({
-//       type:"POST",
-//       url:"http://localhost/crud-ajax-json-jquery-php/api/deleteStudent.php",
-//       data:{
-//           sid : sID
-//           },
-//       success: function(data){
-//         $(".edit-form").hide();
-//           $("ul").remove();
-//           getall();
-//         }
-//       })
-//
-// })
 })
