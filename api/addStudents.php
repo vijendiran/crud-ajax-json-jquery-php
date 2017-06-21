@@ -1,10 +1,4 @@
 <?php
-echo $_POST["name"];
-echo $_POST["fathername"];
-echo $_POST["rollno"];
-echo $_POST["degree"];
-echo $_POST["branch"];
-echo "vijendiran";
 
 $dbh = new PDO("mysql:host=localhost;dbname=schoolstd","root","root");
 $sql = " INSERT INTO schoolstudents(name,fathername,rollno,degree,branch) VALUES (:name,:fathername,:rollno,:degree,:branch)";
@@ -15,5 +9,4 @@ $addStudentsQuery->bindParam(":rollno",$_POST["rollno"],PDO::PARAM_STR);
 $addStudentsQuery->bindParam(":degree",$_POST["degree"],PDO::PARAM_STR);
 $addStudentsQuery->bindParam(":branch",$_POST["branch"],PDO::PARAM_STR);
 $addStudentsQuery->execute();
-
  ?>
