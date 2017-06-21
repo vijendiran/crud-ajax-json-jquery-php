@@ -8,32 +8,15 @@ function getall() {
     success:function(data) {
       studentsList = JSON.parse(data);
       console.log(studentsList);
-      // console.log(studentsList[0][0]);
       for (var i = 0; i < studentsList.length; i++) {
         // console.log(studentsList[i]["name"]);
-            $(".studentsList").append("<ul><li>"+studentsList[i]["name"]+"</li><li>"+studentsList[i]["fathername"]+"</li><li>"+studentsList[i]["rollno"]+"</li><li>"+studentsList[i]["degree"]+"</li><li>"+studentsList[i]["branch"]+"</li><div class='delete-btn'>delete</div></ul>");
+        $(".studentsList").append('<li><h2>'+studentsList[i]["name"]+'</h2><h3>'+studentsList[i]["fathername"]+'</h3><h4>'+studentsList[i]["rollno"]+'</h4><h5>'+studentsList[i]["degree"]+'</h5><h6>'+studentsList[i]["branch"]+'</h6><div class="update-btn">update</div></li>');
       }
-
     }
-
   })
 }
 getall();
-//li-on-click
-$("body").on("click",".studentsList ul",function() {
-  // console.log("li works");
-  // console.log(studentsList[$(this).index()]);
-  // console.log(studentsList[0]);
-  $(".edit-form").show();
-  var index = $(this).index();
-  $(".edit-form .studentName").val(studentsList[index]["name"]);
-  $(".edit-form .studentFname").val(studentsList[index]["fathername"]);
-  $(".edit-form .studentRollno").val(studentsList[index]["rollno"]);
-  $(".edit-form .studentDegree").val(studentsList[index]["degree"]);
-  $(".edit-form .studentBranch").val(studentsList[index]["branch"]);
-  $(".edit-form .sid").val(studentsList[index]["id"]);
-});
-
+// Add a student to database
 $(".submit-student").click(function() {
   var sName = $(".studentName").val();
   var sFname = $(".studentFname").val();
@@ -45,6 +28,7 @@ $(".submit-student").click(function() {
   // console.log(sRollno);
   // console.log(sDegree);
   // console.log(sBranch);
+  // return;
 
   $.ajax({
     url:"http://localhost/crud-ajax-json-jquery-php/api/addStudents.php",
@@ -58,7 +42,7 @@ $(".submit-student").click(function() {
     },
     success:function(data) {
     // console.log(data);
-    $(".studentsList").append("<li>"+sName+"</li>");
+    $(".studentsList").append('<li><h2>'+sName+'</h2><h3>'+sFname+'</h3><h4>'+sRollno+'</h4><h5>'+sDegree+'</h5><h6>'+sBranch+'</h6><div class="update-btn">update</div></li>');
     getall();
 
   }
