@@ -20,15 +20,10 @@ function getall() {
 }
 getall();
 //li-on-click
-$("body").on("click",".studentsList  .update-btn",function() {
+$("body").on("click",".studentsList .update-btn",function() {
   console.log("li works");
-
   $(".edit-form").show();
-  var name =$(this).find(".studentsList .stdname").html();
-  $(".edit-form .studentName").val(name);
-
-  return;
-  var index = $(this).index();
+  var index = $(this).parents("li").index();
   $(".edit-form .studentName").val(studentsList[index]["name"]);
   $(".edit-form .studentFname").val(studentsList[index]["fathername"]);
   $(".edit-form .studentRollno").val(studentsList[index]["rollno"]);
@@ -37,8 +32,8 @@ $("body").on("click",".studentsList  .update-btn",function() {
   $(".edit-form .sid").val(studentsList[index]["id"]);
 });
 
-// Edit-form
-$(".edit-student").click(function() {
+// save-student-to-database
+$(".save-student").click(function() {
   // console.log("hello");
 
   var sName = $(".edit-form .studentName").val();
@@ -47,13 +42,6 @@ $(".edit-student").click(function() {
   var sDegree = $(".edit-form .studentDegree").val();
   var sBranch = $(".edit-form .studentBranch").val();
   var sID = $(".edit-form .sid").val();
-
-  // console.log(sName);
-  // console.log(sFname);
-  // console.log(sRollno);
-  // console.log(sDegree);
-  // console.log(sBranch);
-  // console.log(sID);
 
   //send to php file via ajax
   $.ajax({
@@ -69,8 +57,6 @@ $(".edit-student").click(function() {
     },
         success:function(data) {
         getall();
-        // $(".studentsList").append("<li>"+sName+"</li>");
-
       }
   })
 })
@@ -81,11 +67,6 @@ $(".submit-student").click(function() {
   var sRollno = $(".studentRollno").val();
   var sDegree = $(".studentDegree").val();
   var sBranch = $(".studentBranch").val();
-  // console.log(sName);
-  // console.log(sFname);
-  // console.log(sRollno);
-  // console.log(sDegree);
-  // console.log(sBranch);
 
   $.ajax({
     url:"http://localhost/crud-ajax-json-jquery-php/api/addStudents.php",
@@ -98,7 +79,6 @@ $(".submit-student").click(function() {
       branch :sBranch
     },
     success:function(data) {
-    // console.log(data);
     $(".studentsList").append("<li>"+sName+"</li>");
     getall();
 
