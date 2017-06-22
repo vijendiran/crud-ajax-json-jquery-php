@@ -9,7 +9,7 @@ function getall() {
       studentsList = JSON.parse(data);
       console.log(studentsList);
       for (var i = 0; i < studentsList.length; i++) {
-        $(".studentsList").append('<li><h2>'+studentsList[i]["name"]+'</h2><h3>'+studentsList[i]["fathername"]+'</h3><h4>'+studentsList[i]["rollno"]+'</h4><h5>'+studentsList[i]["degree"]+'</h5><h6>'+studentsList[i]["branch"]+'</h6><div class="update-btn">update</div><div class="delete-btn">delete</div></li>');
+        $(".studentsList").append('<li><h2>'+studentsList[i]["name"]+'</h2><h3>'+studentsList[i]["fathername"]+'</h3><h4>'+studentsList[i]["rollno"]+'</h4><h5>'+studentsList[i]["degree"]+'</h5><h6>'+studentsList[i]["branch"]+'</h6><div class="update-btn">update</div><div class="delete-btn">delete</div><input type="hidden" value="" class="stdID"></li>');
       }
     }
   })
@@ -76,6 +76,22 @@ $(".submit-student").click(function() {
     $(".studentsList").append('<li><h2>'+sName+'</h2><h3>'+sFname+'</h3><h4>'+sRollno+'</h4><h5>'+sDegree+'</h5><h6>'+sBranch+'</h6><div class="update-btn">update</div></li>');
     getall();
   }
+  })
+})
+$("body").on("click",".delete-btn",function() {
+  var index = $(this).parents("li").index();
+  $(".studentsList .stdID").val(studentsList[index]["id"])
+  var studentID =$(".studentsList .stdID").val();
+  $.ajax({
+    url:"http://localhost/crud-ajax-json-jquery-php/api/deleteStudent.php",
+    method:"POST",
+    data:{
+      sid :studentID
+    },
+    success:function(data) {
+      $(this).parent().remove();
+      getall();
+    }
   })
 })
 })
