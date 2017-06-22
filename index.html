@@ -6,8 +6,13 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h2>add-student form</h2>
+    <h1 class="heading">CRUD example in PHP, Ajax, jQuery</h1>
+    <div class="arrow">
+      <center><img src="downarrow.png" class="downArrow"/></center>
+
+    </div>
     <div class="add-form">
+      <h2 class="addForm-head">Add-Form</h2>
       <label>Name</label>
       <input type="text" name="" value="" class="studentName"><br>
       <label>Father's name</label>
@@ -20,18 +25,17 @@
       <input type="text" name="" value="" class="studentBranch"><br>
       <input type="submit" name="" value="Add student" class="submit-student">
     </div>
-    <div class="studentsList">
-      <ul>
+    <ul class="studentsList">
         <h2 class="stdname"></h2>
         <h3 class="stdFname"></h3>
         <h4 class="stdrollno"></h4>
         <h5 class="stddegree"></h5>
         <h6 class="stdbranch"></h6>
         <input type="hidden" name="" value="" class="stdid">
-     </ul>
-    </div>
-    <h2>Edit-student-form</h2>
+    </ul>
+    <h2 class="editForm-head" style="display:none">Edit-student-form</h2>
     <div class="edit-form" style="display:none">
+      <h2 class="addForm-head">Edit-Form</h2>
       <input type="hidden" name="" value="" class="sid">
       <label>Name</label>
       <input type="text" name="" value="" class="studentName"><br>

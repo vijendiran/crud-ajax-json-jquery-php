@@ -9,7 +9,7 @@ function getall() {
       studentsList = JSON.parse(data);
       console.log(studentsList);
       for (var i = 0; i < studentsList.length; i++) {
-        $(".studentsList").append('<li><h2>'+studentsList[i]["name"]+'</h2><h3>'+studentsList[i]["fathername"]+'</h3><h4>'+studentsList[i]["rollno"]+'</h4><h5>'+studentsList[i]["degree"]+'</h5><h6>'+studentsList[i]["branch"]+'</h6><div class="update-btn">update</div><div class="delete-btn">delete</div><input type="hidden" value="" class="stdID"></li>');
+        $(".studentsList").append('<li><h2>'+"Name: "+studentsList[i]["name"]+'</h2><h3>'+"FatherName: "+studentsList[i]["fathername"]+'</h3><h4>'+"Rollno: "+studentsList[i]["rollno"]+'</h4><h5>'+"Degree: "+studentsList[i]["degree"]+'</h5><h6>'+"Branch: "+studentsList[i]["branch"]+'</h6><div class="update-btn">update</div><div class="delete-btn">delete</div><input type="hidden" value="" class="stdID"></li>');
       }
     }
   })
@@ -93,5 +93,14 @@ $("body").on("click",".delete-btn",function() {
       getall();
     }
   })
+})
+$(".downArrow").click(function() {
+  $(".add-form").slideToggle("slow");
+})
+$(".save-student").click(function() {
+$(".edit-form").hide();
+})
+$(".submit-student").click(function() {
+$(".add-form").hide();
 })
 })
