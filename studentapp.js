@@ -15,7 +15,45 @@ function getall() {
   })
 }
 getall();
+//update-btn-on-click
+$("body").on("click",".studentsList .update-btn",function() {
+  console.log("li works");
+  $(".edit-form").show();
+  var index = $(this).parents("li").index();
+  $(".edit-form .studentName").val(studentsList[index]["name"]);
+  $(".edit-form .studentFname").val(studentsList[index]["fathername"]);
+  $(".edit-form .studentRollno").val(studentsList[index]["rollno"]);
+  $(".edit-form .studentDegree").val(studentsList[index]["degree"]);
+  $(".edit-form .studentBranch").val(studentsList[index]["branch"]);
+  $(".edit-form .sid").val(studentsList[index]["id"]);
+});
 
+// save-student-to-database
+$(".save-student").click(function() {
+  var sName = $(".edit-form .studentName").val();
+  var sFname = $(".edit-form .studentFname").val();
+  var sRollno = $(".edit-form .studentRollno").val();
+  var sDegree = $(".edit-form .studentDegree").val();
+  var sBranch = $(".edit-form .studentBranch").val();
+  var sID = $(".edit-form .sid").val();
+
+  //send to php file via ajax
+  $.ajax({
+    url:"http://localhost/crud-ajax-json-jquery-php/api/editStudents.php",
+    method:"POST",
+    data:{
+      sid : sID,
+      name : sName,
+      fathername : sFname,
+      rollno : sRollno,
+      degree : sDegree,
+      branch : sBranch
+    },
+        success:function(data) {
+        getall();
+      }
+  })
+})
 // Add a student to database
 $(".submit-student").click(function() {
   var sName = $(".studentName").val();

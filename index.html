@@ -3,44 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title>CRUD-APP</title>
-  <style media="screen">
-  li{
-      color: green;
-      list-style-type: none;
-      margin-left: 30px;
-      border: 1px solid red;
-      margin-top: 10px;
-    }
-  .delete-btn:hover,.update-btn:hover{
-      cursor: pointer;
-      color: orange;
-  }
-  .update-btn{
-    width: 50px;
-    height: 30px;
-    background-color: blue;
-    color: white;
-    /*border: none;*/
-    font-size: 15px;
-    margin:20px;
-  }
-  .delete-btn{
-    width: 50px;
-    height: 30px;
-    background-color: red;
-    color: white;
-    /*border: none;*/
-    font-size: 15px;
-    margin:20px;
-  }
-  </style>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>CRUD-App using AJAX-JSON-JQuery-PHP</h1>
-
-
     <div class="studentsList">
-
+      <ul>
+        <h2 class="stdname"></h2>
+        <h3 class="stdFname"></h3>
+        <h4 class="stdrollno"></h4>
+        <h5 class="stddegree"></h5>
+        <h6 class="stdbranch"></h6>
+        <input type="hidden" name="" value="" class="stdid">
+     </ul>
+    </div>
+    <h2>Edit-student-form</h2>
+    <div class="edit-form" style="display:none">
+      <input type="hidden" name="" value="" class="sid">
+      <label>Name</label>
+      <input type="text" name="" value="" class="studentName"><br>
+      <label>Father's name</label>
+      <input type="text" name="" value="" class="studentFname"><br>
+      <label>Rollno</label>
+      <input type="text" name="" value="" class="studentRollno"><br>
+      <label>Degree</label>
+      <input type="text" name="" value="" class="studentDegree"><br>
+      <label>Branch</label>
+      <input type="text" name="" value="" class="studentBranch"><br>
+      <input type="submit" name="" value="save student" class="save-student">
     </div>
     <h2>add-student form</h2>
     <div class="add-form">
@@ -61,7 +50,5 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-  <script src="studentapp.js">
-
-  </script>
+  <script src="studentapp.js"></script>
 </html>
