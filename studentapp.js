@@ -8,18 +8,15 @@ function getall() {
     success:function(data) {
       studentsList = JSON.parse(data);
       console.log(studentsList);
-      // console.log(studentsList[0][0]);
       for (var i = 0; i < studentsList.length; i++) {
-        // console.log(studentsList[i]["name"]);
-            $(".studentsList").append('<li><h2>'+studentsList[i]["name"]+'<h2><h3>'+studentsList[i]["fathername"]+'</h3><h4>'+studentsList[i]["rollno"]+'</h4><h5>'+studentsList[i]["degree"]+'</h5><div class="update-btn">update</div><div class="delete-btn">delete</div></li>');
+        $(".studentsList").append('<li><h2>'+studentsList[i]["name"]+'<h2><h3>'+studentsList[i]["fathername"]+'</h3><h4>'+studentsList[i]["rollno"]+'</h4><h5>'+studentsList[i]["degree"]+'</h5><div class="update-btn">update</div><div class="delete-btn">delete</div></li>');
       }
-
     }
-
   })
 }
 getall();
-//li-on-click
+
+//update-btn-on-click
 $("body").on("click",".studentsList .update-btn",function() {
   console.log("li works");
   $(".edit-form").show();
@@ -34,8 +31,6 @@ $("body").on("click",".studentsList .update-btn",function() {
 
 // save-student-to-database
 $(".save-student").click(function() {
-  // console.log("hello");
-
   var sName = $(".edit-form .studentName").val();
   var sFname = $(".edit-form .studentFname").val();
   var sRollno = $(".edit-form .studentRollno").val();
@@ -81,7 +76,6 @@ $(".submit-student").click(function() {
     success:function(data) {
     $(".studentsList").append("<li>"+sName+"</li>");
     getall();
-
   }
   })
 })
