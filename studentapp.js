@@ -9,13 +9,12 @@ function getall() {
       studentsList = JSON.parse(data);
       console.log(studentsList);
       for (var i = 0; i < studentsList.length; i++) {
-        $(".studentsList").append('<li><h2>'+studentsList[i]["name"]+'<h2><h3>'+studentsList[i]["fathername"]+'</h3><h4>'+studentsList[i]["rollno"]+'</h4><h5>'+studentsList[i]["degree"]+'</h5><div class="update-btn">update</div><div class="delete-btn">delete</div></li>');
+        $(".studentsList").append('<li><h2>'+studentsList[i]["name"]+'</h2><h3>'+studentsList[i]["fathername"]+'</h3><h4>'+studentsList[i]["rollno"]+'</h4><h5>'+studentsList[i]["degree"]+'</h5><h6>'+studentsList[i]["branch"]+'</h6><div class="update-btn">update</div><div class="delete-btn">delete</div></li>');
       }
     }
   })
 }
 getall();
-
 //update-btn-on-click
 $("body").on("click",".studentsList .update-btn",function() {
   console.log("li works");
@@ -55,7 +54,7 @@ $(".save-student").click(function() {
       }
   })
 })
-
+// Add a student to database
 $(".submit-student").click(function() {
   var sName = $(".studentName").val();
   var sFname = $(".studentFname").val();
@@ -74,7 +73,7 @@ $(".submit-student").click(function() {
       branch :sBranch
     },
     success:function(data) {
-    $(".studentsList").append("<li>"+sName+"</li>");
+    $(".studentsList").append('<li><h2>'+sName+'</h2><h3>'+sFname+'</h3><h4>'+sRollno+'</h4><h5>'+sDegree+'</h5><h6>'+sBranch+'</h6><div class="update-btn">update</div></li>');
     getall();
   }
   })
