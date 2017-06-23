@@ -15,9 +15,9 @@ function getall() {
   })
 }
 getall();
+
 //update-btn-on-click
 $("body").on("click",".studentsList .update-btn",function() {
-  console.log("li works");
   $("li").hide();
   $(".edit-form").show();
   var index = $(this).parents("li").index();
@@ -74,14 +74,13 @@ $(".submit-student").click(function() {
       branch :sBranch
     },
     success:function(data) {
-    $(".studentsList").append('<li><h2>'+sName+'</h2><h3>'+sFname+'</h3><h4>'+sRollno+'</h4><h5>'+sDegree+'</h5><h6>'+sBranch+'</h6><div class="update-btn">update</div></li>');
     getall();
   }
   })
 })
 $("body").on("click",".delete-btn",function() {
   var index = $(this).parents("li").index();
-  $(".studentsList .stdID").val(studentsList[index]["id"])
+  $(".studentsList .stdID").val(studentsList[index]["id"]);
   var studentID =$(".studentsList .stdID").val();
   $.ajax({
     url:"http://localhost/crud-ajax-json-jquery-php/api/deleteStudent.php",
