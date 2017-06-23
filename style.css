@@ -2,43 +2,55 @@ body{
 margin: 0;
 padding: 0;
 /*background-color:#333366;*/
+font-family: 'Droid Sans', sans-serif;
+}
+header{
+	box-shadow: -1px 1px 20px 1px black;
 }
 .studentsList{
 	margin: 0;
 	padding: 0;
 }
 li{
-	margin: 0;
-	padding: 0;
+	margin:35px;
+	padding:20px;
 	list-style-type: none;
-  margin-left: 30px;
-  border: 1px solid red;
-  margin-top: 10px;
-	}
-.delete-btn:hover,.update-btn:hover{
-		cursor: pointer;
-		color: black;
+  border: 1px solid  #abafab;
+	max-width: 300px;
+	float: left;
+	box-shadow: 10px 9px 16px 5px rgba(0, 0, 0, 0.24);
+	background-color: rgba(11, 159, 230, 0.52);
+	text-shadow: 1px 1px 5px rgba(18, 53, 224, 0.43);
 }
 .update-btn{
-	padding: 6px;
+	padding: 10px;
 	width: 80px;
 	height: 40px;
-	background-color: blue;
+	background-color: rgba(42, 42, 212, 0.85);
 	color: white;
 	text-align: center;
   font-size: 18px;
 	border-radius: 15px;
+	margin:0 10px;
 }
 .delete-btn{
-	padding: 6px;
+	padding: 10px;
 	width: 80px;
 	height: 40px;
-	background-color: red;
+	background-color: rgba(236, 12, 12, 0.82);
 	color: white;
 	text-align: center;
 	font-size: 18px;
 	border-radius: 15px;
-	margin-top: 10px;
+	margin: 0 25px;
+}
+.delete-btn:hover{
+	cursor: pointer;
+	background-color: rgba(236, 12, 12, 0.56);
+}
+.update-btn:hover{
+	cursor: pointer;
+	background-color:rgba(42, 42, 212, 0.57);
 }
 .heading{
 	text-align: center;
@@ -63,6 +75,9 @@ li{
 	width: 100%;
 	height: auto;
 }
+.arrow:hover{
+	cursor: pointer;
+}
 .add-form{
 	display: none;
   width: 100%;
@@ -72,6 +87,11 @@ li{
   padding: 20px;
   border: 1px solid white;
   margin: 0 auto;
+}
+.close{
+float: right;
+margin-top: -70px;
+margin-right: -18px;
 }
 *{
   box-sizing: border-box;
@@ -106,6 +126,7 @@ label{
   background-color:#ff8533;
 }
 .edit-form{
+	display: none;
 	width: 100%;
 	height: auto;
 	max-width: 500px;
@@ -117,7 +138,7 @@ label{
 .save-student{
 	padding: 10px;
 	width: 100%;
-	background-color:rgba(255, 117, 26, 0.82);
+	background-color:#3399cc;
 	cursor: pointer;
 	-webkit-border-radius:5px;
 	border: none;
@@ -126,10 +147,14 @@ label{
 	text-align: center;
 	color: white;
 }
-h2,h3,h4,h5,h6{
+h2,h3,h4,h5{
 	margin: 0;
 	padding: 0;
 }
 h4,h5,h6{
 	font-size: 18px;
+}
+h6{
+	margin: 0;
+	margin-bottom: 15px;
 }

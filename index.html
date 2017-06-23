@@ -2,17 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD-APP</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <header>
     <h1 class="heading">CRUD example in PHP, Ajax, jQuery</h1>
     <div class="arrow">
       <center><img src="downarrow.png" class="downArrow"/></center>
-
     </div>
+  </header>
     <div class="add-form">
       <h2 class="addForm-head">Add-Form</h2>
+      <img src="close.png" alt="" class="close">
       <label>Name</label>
       <input type="text" name="" value="" class="studentName"><br>
       <label>Father's name</label>
@@ -34,8 +37,9 @@
         <input type="hidden" name="" value="" class="stdid">
     </ul>
     <h2 class="editForm-head" style="display:none">Edit-student-form</h2>
-    <div class="edit-form" style="display:none">
+    <div class="edit-form">
       <h2 class="addForm-head">Edit-Form</h2>
+      <img src="close.png" alt="" class="close">
       <input type="hidden" name="" value="" class="sid">
       <label>Name</label>
       <input type="text" name="" value="" class="studentName"><br>
